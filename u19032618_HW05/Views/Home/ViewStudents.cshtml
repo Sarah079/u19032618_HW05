@@ -1,0 +1,71 @@
+﻿@model IEnumerable<u19032618_HW05.Models.Students>
+
+@{
+    ViewBag.Title = "ViewStudents";
+}
+
+<h2>ViewStudents</h2>
+<div class="row"> @* serach *@
+    <div class="col-sm-3"></div>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        @foreach (var item in Model)
+        {
+            <a class="dropdown-item" href="#">@item.Class</a>
+        }
+    </div>
+    <div class="col-sm-3"><button class="btn-primary">Search</button></div>
+    <div class="col-sm-3"><button class="btn-danger">Clear</button></div>
+</div>
+
+<div> @* student info *@
+    <h4>Students</h4> 
+    <hr />
+    <table>
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Surname</th>
+                <th>Class</th>
+                <th>Points</th>
+                <th>
+                    @if (ViewBag.Status == false)
+                    {
+                        <p>Return Book</p>
+                    }
+                    else
+                    {
+                        <p>Borrow Book</p>
+                    }
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                @foreach (var item in Model)
+                {
+                    <td>@item.studentId</td>
+                    <td>@item.name</td>
+                    <td>@item.surname</td>
+                    <td>@item.Class</td>
+                    <td>@item.point</td>
+                    <td>
+                        @if (ViewBag.Status == false)
+                        {
+                            if (item.studentId == ViewBag.studentId)
+                            {
+                                <button class="btn btn-primary" onclick="window.location.href = ''"> Return Book</button>
+                            }
+                        }
+                        else
+                        {
+                            <button class="btn btn-primary" onclick="window.location.href = ''"> Borrow Book</button>
+                        }
+                    </td>
+                }
+
+            </tr>
+        </tbody>
+    </table>
+</div>
+

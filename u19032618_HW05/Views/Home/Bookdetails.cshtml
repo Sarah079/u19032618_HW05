@@ -1,0 +1,53 @@
+﻿@model IEnumerable<u19032618_HW05.ModelsVM.BorrowedBooks>
+
+@{
+    ViewBag.Title = "Bookdetails";
+}
+
+    @{ if (ViewBag.Status == false)
+       {
+            <h4>@ViewBag.Message - Book Available</h4>
+       }
+        else
+        {
+            <h4>@ViewBag.Message - Book Out</h4>
+        }
+            
+    }
+
+
+
+<div>
+    <table>
+        <thead>
+            <tr>
+                <th># Borrows - </th>
+                <th>
+                    <button class="btn-primary" onclick="window.location.href = '@Url.Action("ViewStudents","Home")'">View Students</button>
+                </th>
+            </tr>
+            <tr>
+                <th>#</th>
+                <th>Taken Date</th>
+                <th>Brought Date</th>
+                <th>Borrowed By</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.borrowId</td>
+                    <td>@item.takenDate</td>
+                    <td>@item.broughtDate</td>
+                    <td>@item.studentName</td>
+                </tr>
+            }
+
+        </tbody>
+    </table>
+</div>
+
+

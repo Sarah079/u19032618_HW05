@@ -1,0 +1,84 @@
+﻿@model IEnumerable<u19032618_HW05.ModelsVM.BookAuthors>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Books</h2>
+
+
+    @* search row *@
+@using (Html.BeginForm("Search", "Home", FormMethod.Post))
+{
+    <div class="row">
+        <div class="col-lg-4">
+            <input class="form-control" placeholder="Search Book Name" name="name" />
+        </div>
+        <div class="col-lg-2">
+            <div class="form-group">
+                <div class="col-md-12 ">
+                    @Html.DropDownList("typeId", (IEnumerable<SelectListItem>)ViewBag.Types, "Select Type", new { @class = "form-control" })
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-2">
+            <div class="form-group">
+                <div class="col-md-12 ">
+                    @Html.DropDownList("authorId", (IEnumerable<SelectListItem>)ViewBag.Authors, "Select Author", new { @class = "form-control" })
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-2">
+            <button class="btn btn-success btn-lg" type="submit"> Search </button>
+        </div>
+        <div class="col-lg-2">
+            <button class="btn btn-danger btn-lg"> Clear </button>
+        </div>
+    </div>
+}
+
+<div>
+    @* book info *@
+    <table>
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Author</th>
+                <th>Type</th>
+                <th>Page Count</th>
+                <th>Points</th>
+                <th>Status</th>
+                <th></th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.bookId</td>
+                    <td>@item.name</td>
+                    <td>@item.typeName</td>
+                    <td>@item.pagecount</td>
+                    <td>@item.point</td>
+                    <td>
+                        @{
+                            if (item.status == true)
+                            {
+                                <p class="text-success">Available</p>
+                            }
+                            else
+                            {
+                                <p class="text-danger">Out</p>
+                            }
+                        }
+                    </td>
+                    <td><button type="button" class="btn btn-primary" onclick="window.location.href = '@Url.Action("Bookdetails","Home",new { bookId = item.bookId })'">View</button></td>
+                </tr>
+            }
+
+        </tbody>
+    </table>
+</div>
+
