@@ -54,12 +54,12 @@
                         {
                             if (item.studentId == ViewBag.studentId)
                             {
-                                <button class="btn btn-primary" onclick="window.location.href = ''"> Return Book</button>
+                                <button class="btn btn-primary" onclick="window.location.href = @Url.Action("Bookdetails","Home")"> Return Book</button>
                             }
                         }
                         else
                         {
-                            <button class="btn btn-primary" onclick="window.location.href = ''"> Borrow Book</button>
+                            <button class="btn btn-primary" onclick="window.location.href = @Url.Action("Bookdetails","Home")"> Borrow Book</button>
                         }
                     </td>
                 }

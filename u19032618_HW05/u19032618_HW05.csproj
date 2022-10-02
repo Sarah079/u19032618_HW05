@@ -128,7 +128,6 @@
     <Compile Include="ModelsVM\BooksOut.cs" />
     <Compile Include="ModelsVM\BorrowedBooks.cs" />
     <Compile Include="ModelsVM\database.cs" />
-    <Compile Include="ModelsVM\ServiceClass.cs" />
     <Compile Include="Models\Authors.cs" />
     <Compile Include="Models\Books.cs" />
     <Compile Include="Models\Borrows.cs" />
